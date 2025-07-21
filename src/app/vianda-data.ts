@@ -17,7 +17,6 @@ export class ViandaData {
 
   public getAll(): Observable<Vianda[]> {
   if (this.cachedViandas) {
-    // Use 'of' to return an observable from cached data
     return of(this.cachedViandas);
   }
   return this.http.get<Vianda[]>(URL).pipe(
@@ -26,5 +25,17 @@ export class ViandaData {
       this.cachedViandas = viandas;
     }));
   }
+
+  public addVianda(vianda: Vianda): Observable<Vianda> {
+  return this.http.post<Vianda>(URL, vianda).pipe(
+    tap((newVianda) => {
+      if (this.cachedViandas) {
+        this.cachedViandas.push({ ...newVianda, quantity: 0 });
+      }
+    })
+  );
+}
+
+
 
 }

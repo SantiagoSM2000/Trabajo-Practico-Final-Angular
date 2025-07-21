@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { ViandasList } from './viandas-list/viandas-list';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ViandasshopAbout } from './viandasshop-about/viandasshop-about';
 import { ViandasshopViandas } from './viandasshop-viandas/viandasshop-viandas';
 import { Shopcart } from './shopcart/shopcart';
 import { InputInteger } from './input-integer/input-integer';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SignUp } from './sign-up/sign-up';
+import { AddVianda } from './add-vianda/add-vianda';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import { SignUp } from './sign-up/sign-up';
     ViandasshopViandas,
     Shopcart,
     InputInteger,
-    SignUp
+    SignUp,
   ],
   imports: [
     BrowserModule,

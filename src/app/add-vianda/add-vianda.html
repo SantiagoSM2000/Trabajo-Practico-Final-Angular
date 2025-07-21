@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2>Añadir Vianda</h2>
+  <form [formGroup]="viandaForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Nombre</label>
+      <input class="form-control" formControlName="name">
+    </div>
+    <div class="mb-3">
+      <label>Descripción</label>
+      <input class="form-control" formControlName="description">
+    </div>
+    <div class="mb-3">
+      <label>Precio</label>
+      <input type="number" class="form-control" formControlName="price">
+    </div>
+    <div class="mb-3">
+      <label>Stock</label>
+      <input type="number" class="form-control" formControlName="stock">
+    </div>
+    <div class="mb-3">
+      <label>Imagen (URL)</label>
+      <input class="form-control" formControlName="image">
+    </div>
+    <button class="btn btn-success" type="submit" [disabled]="viandaForm.invalid">Añadir</button>
+    <div *ngIf="success" class="alert alert-success mt-3">¡Vianda añadida!</div>
+  </form>
+</div>
