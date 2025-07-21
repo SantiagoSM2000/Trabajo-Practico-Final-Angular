@@ -1,0 +1,16 @@
+<div class="input-group">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <button class="btn btn-primary btn-sm" (click)="decreaseQuantity()">-</button>
+        </div>
+        <input type="text" [(ngModel)]="quantity">
+        <div class="input-group-append">
+            <button class="btn btn-primary btn-sm" (click)="increaseQuantity()">+</button>
+        </div>
+    </div>
+</div>
+
+<!--<button class="btn btn-primary btn-sm" (click)="decreaseQuantity(vianda)">-</button>
+<input type="number" [(ngModel)]="vianda.quantity">
+<button class="btn btn-primary btn-sm" (click)="increaseQuantity(vianda)">+</button>
+-->

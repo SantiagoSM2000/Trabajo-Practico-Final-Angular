@@ -1,0 +1,32 @@
+
+
+
+<ul class="list-group list-group-flush">
+  @for (vianda of viandas; track vianda.name) {
+    <li class="list-group-item d-flex align-items-center gap-3" style="min-height:140px;">
+      <img [src]="vianda.image" [alt]="vianda.name" class="rounded" style="width:100px; height:100px; object-fit:cover; flex-shrink:0;">
+      <div class="flex-grow-1 d-flex flex-column justify-content-center" style="min-width:0;">
+        <h5 class="mb-1 text-truncate">{{ vianda.name }}</h5>
+        <p class="mb-1 text-muted text-truncate">{{ vianda.description }}</p>
+        <div>
+          <span class="fw-bold">${{ vianda.price }}</span>
+          <span class="ms-2" [ngClass]="vianda.stock > 0 ? 'badge rounded-pill text-bg-success' : 'badge rounded-pill text-bg-danger'">
+            {{ vianda.stock > 0 ? ('Stock: ' + vianda.stock) : 'Sin stock' }}
+          </span>
+        </div>
+      </div>
+      <div class="d-flex align-items-center ms-auto" style="gap:0.5rem;">
+        @if (vianda.stock > 0) {
+          <app-input-integer [(quantity)]="vianda.quantity" [max]="vianda.stock" (maxReached)="maxReached($event)"></app-input-integer>
+          <button class="btn btn-primary" style="white-space:nowrap;" (click)="addToCart(vianda)">Comprar</button>
+        }
+      </div>
+    </li>
+  }
+  @empty {
+    <li class="list-group-item text-center">
+      <div class="alert alert-warning mb-0">No hay viandas para mostrar.</div>
+    </li>
+  }
+</ul>
+
