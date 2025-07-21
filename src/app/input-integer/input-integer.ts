@@ -21,28 +21,41 @@ export class InputInteger {
   @Output()
   maxReached: EventEmitter<string> = new EventEmitter<string>();
 
+  showMaxMessage = false;
+
   increaseQuantity(): void {
     if (this.max > this.quantity){
       this.quantity++;
+      this.showMaxMessage = false;
       this.quantityChange.emit(this.quantity);
     }
     else{
-      this.maxReached.emit("Se llego al limite")
+      this.showMaxMessage = true;
+      this.maxReached.emit("Se llego al limite");
     }
-      
   }
+    
 
   decreaseQuantity(): void {
     if (this.quantity > 0){
       this.quantity--;
+      this.showMaxMessage = false;
       this.quantityChange.emit(this.quantity);
     }
   }
 
-  /*
-  changeQuantity(): void{
-    console.log(event.key);
+  
+
+  onInputChange(): void {
+    this.showMaxMessage = false;
+    if (this.quantity == null) this.quantity = 0;
+    if (this.quantity < 0) this.quantity = 0;
+    if (this.quantity > this.max) {
+      this.quantity = this.max;
+      this.showMaxMessage = true;
+      this.maxReached.emit("Se llego al limite");
+    }
     this.quantityChange.emit(this.quantity);
-  }*/
+  }
 
 }

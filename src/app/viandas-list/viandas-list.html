@@ -17,7 +17,7 @@
       </div>
       <div class="d-flex align-items-center ms-auto" style="gap:0.5rem;">
         @if (vianda.stock > 0) {
-          <app-input-integer [(quantity)]="vianda.quantity" [max]="vianda.stock" (maxReached)="maxReached($event)"></app-input-integer>
+          <app-input-integer [(quantity)]="vianda.quantity" [max]="vianda.stock"></app-input-integer>
           <button class="btn btn-primary" style="white-space:nowrap;" (click)="addToCart(vianda)">Comprar</button>
         }
       </div>
